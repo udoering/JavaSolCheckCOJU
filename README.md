@@ -8,7 +8,7 @@ Our "Algorithms and Programing" students (usually programming novices) from vari
 
 The solutions are implemented in Java.
 In the first 6 weeks a typical solution of a certain sub task results in a single method.
-Later object oriented features (constructors, member variables, sub classes, modifiers etc) are to be impleneted too.
+Later object oriented features (constructors, member variables, sub classes, modifiers etc) are to be implemented too.
 
 To get feedback the students have to enter their solutions into a [CodeOcean](https://github.com/openHPI/codeocean) instance, which is hosted at TU Ilmenau.
 After typing the solution or copy pasting it (e.g. from Eclipse) a click on the [Score] button starts the evaluation process. 
@@ -21,4 +21,21 @@ In this process a docker container is started - one per student and task.
 
 ### The given feedback
 In first versions of the evaluation code the given feedback was based on typical JUnit output, which described in general failed assertions.
-Often the students did not understand the meaning of such output - i.e. the feedback was useless. Therefore
+Often the students did not understand the meaning of such output - i.e. the feedback was useless. 
+On the other hand in the JUnit based evaluation it was necessary that the students uploaded complete solutions - including all methods, member variables etc, 
+else the evaluation code did not compile and the students got no readable output at all.
+
+Therefore a reflection based approach for the evaluation was implemented. 
+Before the evaluation of a subtask it first checks if the needed members exist and gives according feedback if not.
+If the evaluation is possible, then 
+  - modifieres,
+  - variable values or
+  - the results of method calls (output, return values, changes in member variables)
+are checked and feedback texts generated.
+The feedback texts usually include all data needed by the students to reproduce the error.
+
+## Current structure of the evaluation code
+task dep
+task indep - very large but easy to copy paste during exercise generation
+
+## Parts of the Check.java
