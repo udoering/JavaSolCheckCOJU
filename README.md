@@ -2,9 +2,9 @@
 JUnit free checks of Java solutions provided by students in the context of CodeOcean (with a JUnit adapter)
 
 ## Context
-Our "Algorithms and Programing" students (usually programming novices) from various engineering programs need feedback for their solutions of
-  - programing tasks (given in PDFs and solved at home or during exercises in our lab) and
-  - short graded tests (twice in a semester in our lab during excercises).
+Our "Algorithms and Programming" students (usually programming novices) from various engineering programs need feedback for their solutions of
+  - programming tasks (given in PDFs and solved at home or during exercises in our lab) and
+  - short graded tests (twice in a semester in our lab during exercises).
 
 The solutions are implemented in Java.
 In the first 6 weeks a typical solution of a certain sub task results in a single method.
@@ -15,8 +15,8 @@ After typing the solution or copy pasting it (e.g. from Eclipse) a click on the 
 In this process a docker container is started - one per student and task.
 
 ### The general evaluation process
-1. The solution (one or more Java files), a makefile as well as the evaluation code for the current task is transfered into the docker image.
-2. The Java code (soultion and evaluation) is compiled per makefile. Note: sometimes the solution code does not compile or it compiles but it does not include a complete solution.
+1. The solution (one or more Java files), a makefile as well as the evaluation code for the current task is transferred into the docker image.
+2. The Java code (solution and evaluation) is compiled per makefile. Note: sometimes the solution code does not compile or it compiles but it does not include a complete solution.
 3. The evaluation code is started and generates textual feedback for each checked sub task. 
 
 ### The given feedback
@@ -43,9 +43,10 @@ The feedback texts usually include all data needed by the students to reproduce 
   - general check description, realised using annotations
   - modifier checks
   - range handling (e.g. to describe ranges of random test parameters)
-  - timeout handling, i.e. cancellable code execution (replaces the last JUnit functionallity we used in our evaluation code, now we are JUnit free)
+  - timeout handling, i.e. cancelable code execution (replaces the last JUnit functionality we used in our evaluation code, now we are JUnit free)
   - Java byte code and Java source code analysis, e.g. to detect loops or position of methods in the student solutions
   - general context information, e.g. epsilons, debug level, timeout, output control
-  - error text generation based on the context in which the error occured
+  - error text generation based on the context in which the error occurred
   - parsing parameter lists (e.g. because of the limited complexity of annotations in Java)
+  - output generation in JUnit style to stay compatible to the [JunitAdapter](https://github.com/openHPI/codeocean/blob/master/lib/junit_adapter.rb) used in CodeOcean (may be replaced by an own adapter in a next version)
   - 
