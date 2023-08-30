@@ -36,8 +36,9 @@ The feedback texts usually include all data needed by the students to reproduce 
 
 ## Current structure of the evaluation code
   - task dependent part: XYZ_refSolClass.java
-  - task independent part: Check.java
-    From software quality point of view it is too large but it is easy to copy-paste during each single exercise generation.
+  - task independent part: Check.java<br>
+    From the software quality point of view Check.java is too large but it is easy to copy-paste during each single exercise generation.
+    When the code is later less experimental it might be split and integrated into the docker images (similarly to JUnit). 
 
 ## Functional parts of the Check.java
   - general check description, realised using annotations
