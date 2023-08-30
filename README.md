@@ -3,8 +3,8 @@ JUnit free checks of Java solutions provided by students in the context of CodeO
 
 ## Context
 Our "Algorithms and Programing" students (usually programming novices) from various engineering programs need feedback for their solutions of
-  - programing exercises and
-  - short tests.
+  - programing tasks (given in PDFs and solved at home or during exercises in our lab) and
+  - short graded tests (twice in a semester in our lab during excercises).
 
 The solutions are implemented in Java.
 In the first 6 weeks a typical solution of a certain sub task results in a single method.
@@ -16,7 +16,7 @@ In this process a docker container is started - one per student and task.
 
 ### The general evaluation process
 1. The solution (one or more Java files), a makefile as well as the evaluation code for the current task is transfered into the docker image.
-2. The Java code is compiled per makefile. Note: sometimes the solution code does not compile or it compiles but it does not include a complete solution.
+2. The Java code (soultion and evaluation) is compiled per makefile. Note: sometimes the solution code does not compile or it compiles but it does not include a complete solution.
 3. The evaluation code is started and generates textual feedback for each checked sub task. 
 
 ### The given feedback
@@ -28,7 +28,7 @@ else the evaluation code did not compile and the students got no readable output
 Therefore a reflection based approach for the evaluation was implemented. 
 Before the evaluation of a subtask it first checks if the needed members exist and gives according feedback if not.
 If the evaluation is possible, then 
-  - modifieres,
+  - modifiers,
   - variable values or
   - the results of method calls (output, return values, changes in member variables)
 are checked and feedback texts generated.
