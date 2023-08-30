@@ -35,7 +35,8 @@ are checked and feedback texts generated.
 The feedback texts usually include all data needed by the students to reproduce the error.
 
 ## Current structure of the evaluation code
-  - task dependent part: XYZ_refSolClass.java
+  - task dependent part: XYZ_refSolClass.java<br>
+    Assuming XYZ.java is the file name of the student solution. 
   - task independent part: Check.java<br>
     From the software quality point of view Check.java is too large but it is easy to copy-paste during each single exercise generation.
     When the code is later less experimental it might be split and integrated into the docker images (similarly to JUnit). 
