@@ -35,7 +35,17 @@ are checked and feedback texts generated.
 The feedback texts usually include all data needed by the students to reproduce the error.
 
 ## Current structure of the evaluation code
-task dep
-task indep - very large but easy to copy paste during exercise generation
+  - task dependent part: XYZ_refSolClass.java
+  - task independent part: Check.java
+    From software quality point of view it is too large but it is easy to copy-paste during each single exercise generation.
 
-## Parts of the Check.java
+## Functional parts of the Check.java
+  - general check description, realised using annotations
+  - modifier checks
+  - range handling (e.g. to describe ranges of random test parameters)
+  - timeout handling, i.e. cancellable code execution (replaces the last JUnit functionallity we used in our evaluation code, now we are JUnit free)
+  - Java byte code and Java source code analysis, e.g. to detect loops or position of methods in the student solutions
+  - general context information, e.g. epsilons, debug level, timeout, output control
+  - error text generation based on the context in which the error occured
+  - parsing parameter lists (e.g. because of the limited complexity of annotations in Java)
+  - 
