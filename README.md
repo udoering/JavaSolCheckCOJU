@@ -1,6 +1,11 @@
 # JavaSolCheckCOJU
 JUnit free checks of Java solutions provided by students in the context of CodeOcean (with a JUnit adapter)
 
+## Why can you find this source code here / what is it good for?
+The source code was uploaded here on the occasion of the [ABP Workshop 2023](https://www.abp-workshop.de/2023) (in general German-language content, but you will find also English papers). [ABP workshops](https://www.abp-workshop.de) focus on the automatic evaluation of programming tasks (automatische Bewertung von Programmieraufgaben).
+
+Currently you find here only a snapshot of the main evaluation code. It may be used as source of inspiration for testing approches in general or to get ideas for certain implementation details.
+
 ## Context
 Our "Algorithms and Programming" students (usually programming novices) from various engineering programs need feedback for their solutions of
   - programming tasks (given in PDFs and solved at home or during exercises in our lab) and
@@ -10,7 +15,7 @@ The solutions are implemented in Java.
 In the first 6 weeks a typical solution of a certain sub task results in a single method.
 Later object oriented features (constructors, member variables, sub classes, modifiers etc) are to be implemented too.
 
-To get feedback the students have to enter their solutions into a [CodeOcean](https://github.com/openHPI/codeocean) instance, which is hosted at TU Ilmenau.
+To get automatically generated feedback the students have to enter their solutions into a [CodeOcean](https://github.com/openHPI/codeocean) instance, which is hosted at TU Ilmenau.
 After typing the solution or copy pasting it (e.g. from Eclipse) a click on the [Score] button starts the evaluation process. 
 In this process a docker container is started - one per student and task.
 
@@ -21,7 +26,7 @@ In this process a docker container is started - one per student and task.
 
 ### The given feedback
 In first versions of the evaluation code the given feedback was based on typical JUnit output, which described in general failed assertions.
-Often the students did not understand the meaning of such output - i.e. the feedback was useless. 
+Often the students did not understand the meaning of such output - i.e. the feedback was useless to them. 
 On the other hand in the JUnit based evaluation it was necessary that the students uploaded complete solutions - including all methods, member variables etc, 
 else the evaluation code did not compile and the students got no readable output at all.
 
@@ -29,8 +34,8 @@ Therefore a reflection based approach for the evaluation was implemented.
 Before the evaluation of a subtask it first checks if the needed members exist and gives according feedback if not.
 If the evaluation is possible, then 
   - modifiers,
-  - variable values or
-  - the results of method calls (output, return values, changes in member variables)
+  - member and class variable values or
+  - the results of method calls (output, return values, changes in class and member variables)
 are checked and feedback texts generated.
 The feedback texts usually include all data needed by the students to reproduce the error.
 
@@ -38,8 +43,8 @@ The feedback texts usually include all data needed by the students to reproduce 
   - task dependent part: XYZ_refSolClass.java<br>
     Assuming XYZ.java is the file name of the student solution. 
   - task independent part: Check.java<br>
-    From the software quality point of view Check.java is too large but it is easy to copy-paste during each single exercise generation.
-    When the code is later less experimental it might be split and integrated into the docker images (similarly to JUnit). 
+    From the software quality point of view Check.java is too large but it is easy to copy-paste this (single) file during each single exercise generation.
+    When the code is later less experimental it might be split again and integrated into the docker images as JAR (similarly to JUnit). 
 
 ## Functional parts of the Check.java
   - general check description, realised using annotations
@@ -51,4 +56,4 @@ The feedback texts usually include all data needed by the students to reproduce 
   - error text generation based on the context in which the error occurred
   - parsing parameter lists (e.g. because of the limited complexity of annotations in Java)
   - output generation in JUnit style to stay compatible to the [JunitAdapter](https://github.com/openHPI/codeocean/blob/master/lib/junit_adapter.rb) used in CodeOcean (may be replaced by an own adapter in a next version)
-  - 
+  - ...
